@@ -33,14 +33,18 @@ env:
     - PGVERSION=9.6
     - PGVERSION=9.4
 
-
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+    - os: linux
+      dist: xenial
 
 language: cpp
 compiler:
   - gcc
 
 sudo: required
-dist: trusty
 
 script:
   - make && sudo make install && make installcheck
