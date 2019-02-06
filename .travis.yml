@@ -4,7 +4,7 @@ before_install:
   - sudo apt-get -y --purge remove postgresql libpq-dev libpq5 postgresql-client-common postgresql-common
   - sudo rm -rf /var/lib/postgresql
   - wget --no-check-certificate  --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-  - sudo sh -c "echo deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main $PGVERSION >> /etc/apt/sources.list.d/postgresql.list"
+  - sudo sh -c "echo deb http://apt.postgresql.org/pub/repos/apt/ $DISTRO-pgdg main $PGVERSION >> /etc/apt/sources.list.d/postgresql.list"
   - sudo apt-get update -qq
   - sudo apt-get -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::="--force-confnew" install postgresql-$PGVERSION postgresql-server-dev-$PGVERSION
   - sudo chmod 777 /etc/postgresql/$PGVERSION/main/pg_hba.conf
@@ -30,35 +30,51 @@ matrix:
     - name: "PG 9.4 trusty"
       os: linux
       dist: trusty
-      env: PGVERSION=9.4
+      env:
+        - DISTRO=trusty
+        - PGVERSION=9.4
     - name: "PG 9.6 trusty"
       os: linux
       dist: trusty
-      env: PGVERSION=9.6
+      env:
+        - DISTRO=trusty
+        - PGVERSION=9.6
     - name: "PG 10 trusty"
       os: linux
       dist: trusty
-      env: PGVERSION=10
+      env:
+        - DISTRO=trusty
+        - PGVERSION=10
     - name: "PG 11 trusty"
       os: linux
       dist: trusty
-      env: PGVERSION=11
+      env:
+        - DISTRO=trusty
+        - PGVERSION=11
     - name: "PG 9.4 xenial"
       os: linux
       dist: xenial
-      env: PGVERSION=9.4
+      env:
+        - DISTRO=xenial
+        - PGVERSION=9.4
     - name: "PG 9.6 xenial"
       os: linux
       dist: xenial
-      env: PGVERSION=9.6
+      env:
+        - DISTRO=xenial
+        - PGVERSION=9.6
     - name: "PG 10 xenial"
       os: linux
       dist: xenial
-      env: PGVERSION=10
+      env:
+        - DISTRO=xenial
+        - PGVERSION=10
     - name: "PG 11 xenial"
       os: linux
       dist: xenial
-      env: PGVERSION=11
+      env:
+        - DISTRO=xenial
+        - PGVERSION=11
 
 language: cpp
 compiler:
