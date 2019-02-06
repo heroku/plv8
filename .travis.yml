@@ -57,24 +57,40 @@ matrix:
       env:
         - DISTRO=xenial
         - PGVERSION=9.4
+      addons:
+        apt:
+          packages:
+            - gcc-4.8.5
     - name: "PG 9.6 xenial"
       os: linux
       dist: xenial
       env:
         - DISTRO=xenial
         - PGVERSION=9.6
+      addons:
+        apt:
+          packages:
+            - gcc-4.8.5
     - name: "PG 10 xenial"
       os: linux
       dist: xenial
       env:
         - DISTRO=xenial
         - PGVERSION=10
+      addons:
+        apt:
+          packages:
+            - gcc-4.8.5
     - name: "PG 11 xenial"
       os: linux
       dist: xenial
       env:
         - DISTRO=xenial
         - PGVERSION=11
+      addons:
+        apt:
+          packages:
+            - gcc-4.8.5
 
 language: cpp
 compiler:
